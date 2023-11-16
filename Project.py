@@ -66,7 +66,7 @@ def main():
     cipher, enc_key = initialize_fernet()
 
     # Load the image
-    image_path = "D:\Work Stuff\Coding\IBM Skillsbuild\Project\Test.jpg"
+    image_path = "./Test.jpg"
     image = cv2.imread(image_path)
     n_max = image.shape[0]
     m_max = image.shape[1]
