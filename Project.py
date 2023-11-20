@@ -28,6 +28,7 @@ def decrypt_text(cipher, enc_msg):
 
 
 def embed_text_in_image(image, encMessage, block_size):
+
     n_max = image.shape[0]
     m_max = image.shape[1]
     tln = len(encMessage)
@@ -41,7 +42,7 @@ def embed_text_in_image(image, encMessage, block_size):
     for i in range(tln):
         # Mapping each block to a position in the image
         block_number = i % block_count
-        block_row = block_number // (n_max // block_size)
+        block_row = block_number // (m_max // block_size)
         block_col = block_number % (m_max // block_size)
         n = block_row * block_size
         m = block_col * block_size
@@ -60,7 +61,7 @@ def extract_text_from_image(image, n_max, m_max, encMessage, block_size):
 
     for i in range(tln):
         # Mapping each block to a position in the image
-        block_row = i // (n_max // block_size)
+        block_row = i // (m_max // block_size)
         block_col = i % (m_max // block_size)
         n = block_row * block_size
         m = block_col * block_size
@@ -90,15 +91,18 @@ def main():
 
     # Encryption
     encMessage = encrypt_text(cipher, msg)
+    print("The encryption key:", enc_key)
+    print("Message after encryption:", encMessage)
 
+    block_size = int(
+        input("Enter block size[prefereably between 8-20 for small images]:"))
     # Embedding
     embedded_image = embed_text_in_image(image.copy(), encMessage, block_size)
 
     # Save the image
     cv2.imwrite("Encrypted.jpg", embedded_image)
     os.startfile("Encrypted.jpg")
-    print("The encryption key:", enc_key)
-    print("Message after encryption:", encMessage)
+
     print("Data Hiding in image completed successfully")
 
     # Decryption
