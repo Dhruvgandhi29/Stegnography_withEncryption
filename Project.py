@@ -77,7 +77,11 @@ def main():
     cipher, enc_key = initialize_fernet()
 
     # Load the image
+<<<<<<< HEAD
     image_path = "./test.jpg"
+=======
+    image_path = "./Test.jpg"
+>>>>>>> 657cf716ab9dcb6a5cadc12648eb2fb959b3024a
     image = cv2.imread(image_path)
     n_max = image.shape[0]
     m_max = image.shape[1]
