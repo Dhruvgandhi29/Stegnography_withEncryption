@@ -41,7 +41,7 @@ def embed_text_in_image(image, encMessage, block_size):
     for i in range(tln):
         # Mapping each block to a position in the image
         block_number = i % block_count
-        block_row = block_number // (m_max // block_size)
+        block_row = block_number // (n_max // block_size)
         block_col = block_number % (m_max // block_size)
         n = block_row * block_size
         m = block_col * block_size
@@ -60,7 +60,7 @@ def extract_text_from_image(image, n_max, m_max, encMessage, block_size):
 
     for i in range(tln):
         # Mapping each block to a position in the image
-        block_row = i // (m_max // block_size)
+        block_row = i // (n_max // block_size)
         block_col = i % (m_max // block_size)
         n = block_row * block_size
         m = block_col * block_size
